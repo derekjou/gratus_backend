@@ -1,0 +1,1 @@
+export MONGODB_URI="mongodb+srv://derekjou:derekjou@cluster0-ktaiz.mongodb.net/gratus?retryWrites=true&w=majority"
