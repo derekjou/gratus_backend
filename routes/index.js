@@ -4,7 +4,7 @@ const { User, Post } = require("../models");
 
 router.post("/register", async(req, res) => {
     try{
-        console.log(req.body.name);
+        console.log(req.body);
         User.findOne({username: req.body.username}, async (err, resp) => {
             console.log('inside findOne');
             if(resp) {
@@ -20,6 +20,7 @@ router.post("/register", async(req, res) => {
             }
             console.log('after if statements');
         })
+        console.log('after find')
     } catch(e) {
         console.log('Error creating new user', e);
         res.json({ success: false, error: e });
