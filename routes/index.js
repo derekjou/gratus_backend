@@ -4,6 +4,7 @@ const { User, Post } = require("../models");
 
 router.post("/register", async(req, res) => {
     try{
+        console.log(req.body);
         User.findOne({username: req.body.username}, async (err, resp) => {
             if(resp) {
                 res.json({ success: false, error: "Username taken" })
