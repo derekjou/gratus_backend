@@ -4,20 +4,19 @@ const { User, Post } = require("../models");
 
 router.post("/register", async(req, res) => {
     try{
-        // User.findOne({username: req.body.username}, async (err, resp) => {
-        //     if(resp) {
-        //         res.json({ success: false, error: "Username taken" })
-        //     } else {
-        //         const user = new User({
-        //             name: req.body.name,
-        //             username: req.body.username,
-        //             password: req.body.password
-        //         })
-        //         await user.save();
-        //         res.json({ success: true });
-        //     }
-        // })
-        res.send('HEHE')
+        User.findOne({username: req.body.username}, async (err, resp) => {
+            if(resp) {
+                res.json({ success: false, error: "Username taken" })
+            } else {
+                const user = new User({
+                    name: req.body.name,
+                    username: req.body.username,
+                    password: req.body.password
+                })
+                await user.save();
+                res.json({ success: true });
+            }
+        })
     } catch(e) {
         console.log('Error creating new user', e);
         res.json({ success: false, error: e });
