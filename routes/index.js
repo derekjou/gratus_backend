@@ -4,21 +4,21 @@ const { User, Post } = require("../models");
 
 router.post("/register", async(req, res) => {
     try{
-        console.log(req.body);
+        console.log(req.body.name);
         User.findOne({username: req.body.username}, async (err, resp) => {
-            // console.log('inside findOne');
+            console.log('inside findOne');
             if(resp) {
                 res.json({ success: false, error: "Username taken" })
             } else {
                 const user = new User({
-                    name: req.body.name,
-                    username: req.body.username,
-                    password: req.body.password
+                    name: req.body.name + "",
+                    username: req.body.username + "",
+                    password: req.body.password + ""
                 })
                 await user.save();
                 res.json({ success: true });
             }
-            // console.log('after if statements');
+            console.log('after if statements');
         })
     } catch(e) {
         console.log('Error creating new user', e);
