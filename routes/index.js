@@ -6,6 +6,7 @@ router.post("/register", async(req, res) => {
     try{
         console.log(req.body);
         User.findOne({username: req.body.username}, async (err, resp) => {
+            // console.log('inside findOne');
             if(resp) {
                 res.json({ success: false, error: "Username taken" })
             } else {
@@ -17,6 +18,7 @@ router.post("/register", async(req, res) => {
                 await user.save();
                 res.json({ success: true });
             }
+            // console.log('after if statements');
         })
     } catch(e) {
         console.log('Error creating new user', e);
