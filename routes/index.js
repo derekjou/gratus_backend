@@ -42,8 +42,18 @@ router.post("/login", async(req, res) => {
     }
 })
 
-router.get('/register', async(req,res) => {
-    res.send('hello');
+router.get('/registerTest', async(req,res) => {
+    try{
+        User.findOne({username: req.body.username}, async(err, resp) => {
+            if(resp){
+                res.send('yessir');
+            } else{
+                res.send('nosir');
+            }
+        })
+    } catch{
+        res.send('failed');
+    }
 })
 
 module.exports = router;
