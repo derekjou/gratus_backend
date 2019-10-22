@@ -44,14 +44,14 @@ router.post("/login", async(req, res) => {
 
 router.get('/registerTest', async(req,res) => {
     try{
-        User.findOne({username: req.body.username}, async(err, resp) => {
+        Users.findOne({username: req.body.username}, async(err, resp) => {
             if(resp){
                 res.send('yessir');
             } else{
                 res.send('nosir');
             }
         })
-    } catch{
+    } catch(e){
         res.send('failed');
     }
 })

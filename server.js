@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes/index")
 
 const app = express();
-const server = require("http").Server(app);
+const server = require("https").Server(app);
 
 // static
 app.use(cors());
