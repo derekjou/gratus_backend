@@ -5,7 +5,7 @@ const { User, Post } = require("../models");
 router.post("/register", async(req, res) => {
     try{
         console.log(req.body);
-        await User.findOne({username: req.body.username.toString()}, async (err, resp) => {
+        await User.findOne({username: req.body.username}, async (err, resp) => {
             console.log('inside findOne');
             if(resp) {
                 res.json({ success: false, error: "Username taken" })

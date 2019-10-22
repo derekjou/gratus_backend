@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // mongo stuff
 const options = { 
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  poolSize: 100 
+  useUnifiedTopology: true
+  // poolSize: 100 
 };
 
 const REQUIRED_ENVS = ["MONGODB_URI"];
