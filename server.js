@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 const routes = require("./routes/index")
 
 const app = express();
-const server = require("http").Server(app);
 
 // static
 app.use(cors());
@@ -39,6 +38,6 @@ app.get("/", (req, res)=> {
 // get routes
 app.use(routes);
 
-server.listen(process.env.PORT||4000, function() {
+app.listen(process.env.PORT||4000, function() {
     console.log("server is running on port 4000");
   });
