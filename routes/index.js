@@ -4,9 +4,7 @@ const { User, Post } = require("../models");
 
 router.post("/register", async(req, res) => {
     try{
-        console.log(req.body);
         await User.findOne({username: req.body.username}, async (err, resp) => {
-            console.log('inside findOne');
             if(resp) {
                 res.json({ success: false, error: "Username taken" })
             } else {
@@ -18,9 +16,7 @@ router.post("/register", async(req, res) => {
                 await user.save();
                 res.json({ success: true });
             }
-            console.log('after if statements');
         })
-        console.log('after find')
     } catch(e) {
         console.log('Error creating new user', e);
         res.json({ success: false, error: e });
@@ -42,18 +38,5 @@ router.post("/login", async(req, res) => {
     }
 })
 
-router.get('/registerTest', async(req,res) => {
-    try{
-        Users.findOne({username: req.body.username}, async(err, resp) => {
-            if(resp){
-                res.send('yessir');
-            } else{
-                res.send('nosir');
-            }
-        })
-    } catch(e){
-        res.send('failed');
-    }
-})
 
 module.exports = router;
